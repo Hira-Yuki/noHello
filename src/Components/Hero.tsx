@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const seyHi = [
@@ -9,8 +9,8 @@ const seyHi = [
   "bonjour!",
   "greetings!",
   "Yoooooo!",
+  "ping.",
   "안녕하세요!",
-  "ping",
 ];
 
 function Hero() {
