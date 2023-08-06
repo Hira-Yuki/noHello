@@ -1,48 +1,57 @@
 import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
 
-const sayHi: string[] = [
-  "Hi",
-  "Hello",
-  "hey",
-  "bonjour",
-  "greetings",
-  "Yoooooo",
-  "ping",
-  "안녕하세요",
-  "こんばんは",
-  "你好",
-  "Сайн уу",
+const greetingMessages: string[] = [
+  "Hi.",
+  "Hello!",
+  "hey!",
+  "bonjour!",
+  "greetings!",
+  "Yoooooo!",
+  "ping.",
+  "안녕하세요!",
+  "こんばんは。",
+  "你好。",
+  "Сайн уу.",
   "مرحبًا"
 ];
 
 function Hero() {
+  // 상태 변수
   const [greetingIndex, setGreetingIndex] = useState<number>(0);
   const [currentGreeting, setCurrentGreeting] = useState<string>('');
 
   useEffect(() => {
+    // 타이핑 및 삭제에 사용되는 타이머 변수들
     let typingTimeout: ReturnType<typeof setTimeout>;
     let typingInterval: ReturnType<typeof setInterval>;
 
     const typeAnimation = () => {
-      const greeting: string = sayHi[greetingIndex];
+      // 현재 출력할 인삿말을 가져옴
+      const greeting: string = greetingMessages[greetingIndex];
       let typedGreeting: string = '';
       let currentIndex: number = 0;
 
+      // 타이핑 애니메이션 실행
       typingInterval = setInterval(() => {
         typedGreeting += greeting[currentIndex];
         setCurrentGreeting(typedGreeting);
         currentIndex++;
 
+        // 타이핑이 완료된 경우
         if (currentIndex === greeting.length) {
           clearInterval(typingInterval);
+
+          // 2초 후 삭제 애니메이션 실행
           typingTimeout = setTimeout(() => {
+            // 삭제 애니메이션
             const deletingInterval = setInterval(() => {
               typedGreeting = typedGreeting.slice(0, -1);
               setCurrentGreeting(typedGreeting);
               if (typedGreeting === '') {
                 clearInterval(deletingInterval);
-                setGreetingIndex((prevIndex) => (prevIndex + 1) % sayHi.length);
+                // 다음 인삿말로 이동
+                setGreetingIndex((prevIndex) => (prevIndex + 1) % greetingMessages.length);
               }
             }, 100);
           }, 2000);
@@ -50,6 +59,7 @@ function Hero() {
       }, 100);
     };
 
+    // 타이핑 애니메이션 시작
     typeAnimation();
 
     return () => {

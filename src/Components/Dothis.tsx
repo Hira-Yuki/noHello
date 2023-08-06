@@ -86,6 +86,8 @@ const StSectionTilte = styled.h2`
 const StSectionLeft = styled.div`
   flex: 1;
   min-width: 300px; /* 원하는 최소 너비 설정 */
+  padding-left: 20px;
+  padding-right: 20px;
 `
 
 const StSmallBox = styled.div`
@@ -124,6 +126,8 @@ const StContentsBox = styled.div`
 const StSectionRight = styled.div`
   flex: 1;
   min-width: 300px; /* 원하는 최소 너비 설정 */
+  padding-left: 20px;
+  padding-right: 20px;
 `
 
 const StSectionText = styled.p`
