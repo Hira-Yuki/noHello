@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
 
 
-const seyHi = [
+const sayHi = [
   "Hi.",
   "Hello!",
   "hey!",
@@ -23,7 +23,7 @@ function Hero() {
     let typingInterval: ReturnType<typeof setInterval>;
 
     const typeAnimation = () => {
-      const greeting = seyHi[greetingIndex];
+      const greeting = sayHi[greetingIndex];
       let typedGreeting = '';
       let currentIndex = 0;
 
@@ -35,7 +35,7 @@ function Hero() {
         if (currentIndex === greeting.length) {
           clearInterval(typingInterval);
           setTimeout(() => {
-            setGreetingIndex((prevIndex) => (prevIndex + 1) % seyHi.length);
+            setGreetingIndex((prevIndex) => (prevIndex + 1) % sayHi.length);
           }, 2000);
         }
       }, 100);
