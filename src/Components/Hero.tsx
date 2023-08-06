@@ -1,45 +1,50 @@
 import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
 
-
-const sayHi = [
-  "Hi.",
-  "Hello!",
-  "hey!",
-  "bonjour!",
-  "greetings!",
-  "Yoooooo!",
-  "ping.",
-  "안녕하세요!",
-  "こんばんは。",
-  "你好。",
-  "Сайн уу.",
+const sayHi: string[] = [
+  "Hi",
+  "Hello",
+  "hey",
+  "bonjour",
+  "greetings",
+  "Yoooooo",
+  "ping",
+  "안녕하세요",
+  "こんばんは",
+  "你好",
+  "Сайн уу",
   "مرحبًا"
 ];
 
 function Hero() {
-
-  const [greetingIndex, setGreetingIndex] = useState(0);
-  const [currentGreeting, setCurrentGreeting] = useState('');
+  const [greetingIndex, setGreetingIndex] = useState<number>(0);
+  const [currentGreeting, setCurrentGreeting] = useState<string>('');
 
   useEffect(() => {
     let typingTimeout: ReturnType<typeof setTimeout>;
     let typingInterval: ReturnType<typeof setInterval>;
 
     const typeAnimation = () => {
-      const greeting = sayHi[greetingIndex];
-      let typedGreeting = '';
-      let currentIndex = 0;
+      const greeting: string = sayHi[greetingIndex];
+      let typedGreeting: string = '';
+      let currentIndex: number = 0;
 
-      const typingInterval = setInterval(() => {
+      typingInterval = setInterval(() => {
         typedGreeting += greeting[currentIndex];
         setCurrentGreeting(typedGreeting);
         currentIndex++;
 
         if (currentIndex === greeting.length) {
           clearInterval(typingInterval);
-          setTimeout(() => {
-            setGreetingIndex((prevIndex) => (prevIndex + 1) % sayHi.length);
+          typingTimeout = setTimeout(() => {
+            const deletingInterval = setInterval(() => {
+              typedGreeting = typedGreeting.slice(0, -1);
+              setCurrentGreeting(typedGreeting);
+              if (typedGreeting === '') {
+                clearInterval(deletingInterval);
+                setGreetingIndex((prevIndex) => (prevIndex + 1) % sayHi.length);
+              }
+            }, 100);
           }, 2000);
         }
       }, 100);
@@ -68,12 +73,11 @@ function Hero() {
   )
 }
 
-export default Hero
+export default Hero;
 
 const blinkAnimation = keyframes`
-  0% { opacity: 1; }
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-  100% { opacity: 1; }
 `;
 
 const StHero = styled.div`
