@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Hero from './Components/Hero';
 import Donotthis from './Components/Donotthis';
 import Dothis from './Components/Dothis';
+import Footer from './Components/Footer';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <StDoThisContainer>
         <Dothis />
       </StDoThisContainer>
+      <Footer />
     </StContainer>
   );
 }
