@@ -85,7 +85,8 @@ const StSectionTilte = styled.h2`
 `
 
 const StSectionLeft = styled.div`
-  width: 40%;
+    flex: 1;
+    min-width: 300px; /* 원하는 최소 너비 설정 */
 `
 
 const StSmallBox = styled.div`
@@ -115,11 +116,15 @@ const StChatMassage = styled.span`
 const StContentsBox = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 const StSectionRight = styled.div`
-margin-top: 45px;
-  width: 59%;
+  flex: 1;
+  min-width: 300px; /* 원하는 최소 너비 설정 */
 `
 
 const StSectionText = styled.p`
